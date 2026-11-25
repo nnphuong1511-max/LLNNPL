@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ôn tập Lý luận Nhà nước & Pháp luật | LLNNPL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1419;
+      --bg-card: #1a2332;
+      --bg-soft: #243044;
+      --border: #2d3a4f;
+      --text: #e8eef7;
+      --text-muted: #9fb0c7;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.15);
+      --green: #22c55e;
+      --green-soft: rgba(34, 197, 94, 0.12);
+      --red: #ef4444;
+      --red-soft: rgba(239, 68, 68, 0.12);
+      --orange: #f59e0b;
+      --orange-soft: rgba(245, 158, 11, 0.12);
+      --purple: #a855f7;
+      --radius: 14px;
+      --shadow: 0 8px 30px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 20, 25, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 1.25rem;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+    }
+    .nav-toggle {
+      display: none;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 0.7rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* Layout */
+    .layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 1.75rem;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      align-self: start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+    .sidebar h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      padding-left: 0.5rem;
+    }
+    .nav-list { list-style: none; }
+    .nav-list a {
+      display: block;
+      padding: 0.55rem 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: all 0.15s;
+      margin-bottom: 2px;
+    }
+    .nav-list a:hover, .nav-list a.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .nav-list a.active { font-weight: 600; }
+
+    /* Main content */
+    .main { min-width: 0; }
+    .hero {
+      background: linear-gradient(145deg, #1e3a5f 0%, #1a2332 60%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.6rem;
+      margin-bottom: 1.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; right: -10%;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(59,130,246,0.25), transparent 70%);
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      position: relative;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 620px;
+      position: relative;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.1rem;
+      position: relative;
+    }
+    .badge {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #93c5fd;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    /* Section cards */
+    section {
+      margin-bottom: 2.2rem;
+      scroll-margin-top: 90px;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 1.28rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-num {
+      background: var(--accent);
+      color: white;
+      width: 32px; height: 32px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.65rem;
+      color: #93c5fd;
+    }
+    .card h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0.9rem 0 0.4rem;
+      color: var(--text);
+    }
+    .card p, .card li {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .card ul, .card ol {
+      padding-left: 1.25rem;
+      margin: 0.4rem 0;
+    }
+    .card li { margin-bottom: 0.35rem; }
+
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      padding: 0.7rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin: 0.8rem 0;
+      font-size: 0.93rem;
+    }
+    .highlight.warn {
+      background: var(--orange-soft);
+      border-left-color: var(--orange);
+    }
+    .highlight.danger {
+      background: var(--red-soft);
+      border-left-color: var(--red);
+    }
+    .highlight.success {
+      background: var(--green-soft);
+      border-left-color: var(--green);
+    }
+
+    .law-ref {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(168, 85, 247, 0.12);
+      color: #c4b5fd;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      margin: 0 0.15rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 700px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    /* Table */
+    .table-wrap { overflow-x: auto; margin: 0.8rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--bg-soft);
+      color: var(--text);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    td { color: var(--text-muted); }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* Quiz */
+    .quiz-item {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      margin-bottom: 0.85rem;
+    }
+    .quiz-q {
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      color: var(--text);
+    }
+    .quiz-options label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      padding: 0.45rem 0.6rem;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-bottom: 0.3rem;
+      transition: background 0.15s;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+    .quiz-options label:hover { background: rgba(255,255,255,0.04); }
+    .quiz-options input { margin-top: 0.25rem; accent-color: var(--accent); }
+    .quiz-feedback {
+      display: none;
+      margin-top: 0.6rem;
+      padding: 0.55rem 0.8rem;
+      border-radius: 7px;
+      font-size: 0.88rem;
+    }
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.correct { background: var(--green-soft); color: #86efac; }
+    .quiz-feedback.wrong { background: var(--red-soft); color: #fca5a5; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      font-family: inherit;
+    }
+    .btn:hover { background: #2563eb; }
+    .btn:active { transform: scale(0.98); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+    .tip-box {
+      background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(59,130,246,0.08));
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    .tip-box h4 {
+      color: #86efac;
+      margin-bottom: 0.5rem;
+      font-size: 0.98rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: fixed;
+        top: 0; left: 0; bottom: 0;
+        width: 280px;
+        z-index: 200;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        border-radius: 0;
+        max-height: 100vh;
+        padding-top: 1.5rem;
+      }
+      .sidebar.open { transform: translateX(0); }
+      .nav-toggle { display: block; }
+      .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.55);
+        z-index: 150;
+      }
+      .overlay.show { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚖️</span>
+        <span>Ôn tập LLNNPL</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <h3>Mục lục</h3>
+      <ul class="nav-list">
+        <li><a href="#sec1" class="nav-link">1. Nhà nước và Đảng</a></li>
+        <li><a href="#sec2" class="nav-link">2. Hình thức & cấu trúc NN</a></li>
+        <li><a href="#sec3" class="nav-link">3. Bộ máy nhà nước</a></li>
+        <li><a href="#sec4" class="nav-link">4. Văn bản pháp luật</a></li>
+        <li><a href="#sec5" class="nav-link">5. Quan hệ PL – SKPL – VPHL</a></li>
+        <li><a href="#sec6" class="nav-link">6. Ý thức & hệ thống PL</a></li>
+        <li><a href="#sec7" class="nav-link">7. Giải thích pháp luật</a></li>
+        <li><a href="#sec8" class="nav-link">8. Hướng dẫn làm bài thi</a></li>
+        <li><a href="#sec9" class="nav-link">9. Luyện tập nhanh</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <div class="hero">
+        <h1>Ôn tập Lý luận Nhà nước & Pháp luật</h1>
+        <p>Tóm tắt trọng tâm theo bài giảng + cấu trúc giáo trình ĐH Luật Hà Nội. Tập trung các điểm dễ nhầm, căn cứ pháp lý và cách trình bày câu trả lời có điểm cao.</p>
+        <div class="badge-row">
+          <span class="badge">Hiến pháp 2013 (sửa đổi 2025)</span>
+          <span class="badge">Trọng tâm thi</span>
+          <span class="badge">Bài tập tình huống</span>
+        </div>
+      </div>
+
+      <!-- 1 -->
+      <section id="sec1">
+        <h2 class="section-title"><span class="section-num">1</span> Nhà nước và Đảng</h2>
+        <div class="card">
+          <h3>Điểm mấu chốt cần nhớ</h3>
+          <ul>
+            <li><strong>Nhà nước và Đảng khác nhau</strong>. Không đồng nhất Đảng với Nhà nước.</li>
+            <li>Nhà nước là <strong>trung tâm của hệ thống chính trị</strong>.</li>
+            <li>Nguyên tắc lãnh đạo của Đảng là nguyên tắc quan trọng, nhưng Đảng lãnh đạo Nhà nước thông qua đường lối, chính sách, cán bộ… chứ không thay thế Nhà nước thực hiện quyền lực nhà nước.</li>
+          </ul>
+          <div class="highlight">
+            <strong>Câu hay sai:</strong> Nhiều bạn viết “Đảng lãnh đạo tuyệt đối, toàn diện” rồi suy ra Đảng = Nhà nước → sai. Phải tách bạch rõ: Đảng lãnh đạo – Nhà nước quản lý.
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section id="sec2">
+        <h2 class="section-title"><span class="section-num">2</span> Hình thức và cấu trúc nhà nước</h2>
+        <div class="card">
+          <h3>Hình thức nhà nước gồm 2 bộ phận chính</h3>
+          <div class="grid-2">
+            <div>
+              <h4>1. Hình thức chính thể</h4>
+              <p>Cách tổ chức quyền lực tối cao (quân chủ / cộng hòa; nghị viện / tổng thống…).</p>
+            </div>
+            <div>
+              <h4>2. Hình thức cấu trúc</h4>
+              <p>Cách tổ chức lãnh thổ và quan hệ trung ương – địa phương (đơn nhất / liên bang / liên minh).</p>
+            </div>
+          </div>
+          <h4>Việt Nam</h4>
+          <ul>
+            <li>Nhà nước <strong>đơn nhất</strong> (không phải liên bang).</li>
+            <li>Được thể hiện qua: hệ thống cơ quan nhà nước thống nhất từ trung ương đến địa phương + hệ thống pháp luật thống nhất.</li>
+          </ul>
+          <div class="highlight warn">
+            Cần phân biệt rõ <strong>kiểu nhà nước</strong> (theo hình thái kinh tế – xã hội: chiếm hữu nô lệ, phong kiến, tư sản, XHCN) với <strong>hình thức nhà nước</strong>.
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section id="sec3">
+        <h2 class="section-title"><span class="section-num">3</span> Bộ máy nhà nước & thẩm quyền các cơ quan</h2>
+        
+        <div class="card">
+          <h3>Quốc hội</h3>
+          <p>Cơ quan <strong>đại biểu cao nhất của Nhân dân</strong>, cơ quan <strong>quyền lực nhà nước cao nhất</strong>.</p>
+          <p>Thực hiện: quyền lập hiến, lập pháp, quyết định các vấn đề quan trọng của đất nước và <strong>giám sát tối cao</strong> đối với hoạt động của Nhà nước.</p>
+          <p><span class="law-ref">Điều 69 HP 2013</span></p>
+          <div class="highlight success">
+            <strong>Nhớ kỹ:</strong> Chỉ Quốc hội mới có quyền giám sát tối cao. Đây là điểm hay bị nhầm với Viện kiểm sát.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Viện kiểm sát nhân dân</h3>
+          <p>Thực hiện <strong>quyền công tố</strong> và <strong>kiểm sát hoạt động tư pháp</strong>.</p>
+          <p>Không phải cơ quan giám sát tối cao toàn bộ hoạt động nhà nước.</p>
+          <p><span class="law-ref">Điều 107 HP 2013</span> (và Luật Tổ chức VKSND)</p>
+        </div>
+
+        <div class="card">
+          <h3>Chính phủ</h3>
+          <p>Cơ quan <strong>hành chính nhà nước cao nhất</strong>, thực hiện quyền hành pháp, chịu trách nhiệm trước Quốc hội.</p>
+        </div>
+
+        <div class="card">
+          <h3>Cách trả lời khi hỏi thẩm quyền</h3>
+          <ol>
+            <li>Xác định đúng cơ quan.</li>
+            <li>Nêu chức năng chính (1–2 câu).</li>
+            <li><strong>Bắt buộc nêu căn cứ pháp lý</strong> (điều khoản Hiến pháp hoặc luật liên quan).</li>
+          </ol>
+          <div class="highlight">
+            Ví dụ: “Quốc hội là cơ quan quyền lực nhà nước cao nhất, thực hiện quyền giám sát tối cao theo Điều 69 Hiến pháp 2013 (đã được sửa đổi, bổ sung năm 2025).”
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section id="sec4">
+        <h2 class="section-title"><span class="section-num">4</span> Văn bản pháp luật & áp dụng pháp luật</h2>
+        <div class="card">
+          <h3>Phân biệt hai loại văn bản</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tiêu chí</th>
+                  <th>Văn bản quy phạm pháp luật</th>
+                  <th>Văn bản áp dụng pháp luật</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tính chất</td>
+                  <td>Chứa quy tắc xử sự chung, áp dụng nhiều lần</td>
+                  <td>Áp dụng quy phạm cho trường hợp cụ thể</td>
+                </tr>
+                <tr>
+                  <td>Ví dụ</td>
+                  <td>Luật, Nghị định, Thông tư…</td>
+                  <td>Bản án, quyết định xử phạt VPHC, quyết định tuyên bố mất tích…</td>
+                </tr>
+                <tr>
+                  <td>Đối tượng</td>
+                  <td>Không xác định trước (chung)</td>
+                  <td>Xác định (cá nhân/tổ chức cụ thể)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Áp dụng pháp luật</strong> là hình thức đặc biệt của thực hiện pháp luật (do cơ quan nhà nước có thẩm quyền thực hiện).</p>
+          <div class="highlight warn">
+            Hay nhầm: nhiều bạn gọi bản án là “văn bản quy phạm pháp luật” → sai hoàn toàn.
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section id="sec5">
+        <h2 class="section-title"><span class="section-num">5</span> Quan hệ pháp luật – Sự kiện pháp lý – Vi phạm pháp luật</h2>
+        
+        <div class="card">
+          <h3>Quan hệ pháp luật</h3>
+          <p>Có 3 thành phần:</p>
+          <ul>
+            <li><strong>Chủ thể</strong>: cá nhân, tổ chức có năng lực pháp luật & năng lực hành vi.</li>
+            <li><strong>Khách thể</strong>: lợi ích / quan hệ xã hội được pháp luật điều chỉnh.</li>
+            <li><strong>Nội dung</strong>: quyền và nghĩa vụ của các chủ thể.</li>
+          </ul>
+          <p>Cần phân biệt <em>năng lực pháp luật</em> (khả năng có quyền, nghĩa vụ) và <em>năng lực hành vi</em> (khả năng tự mình thực hiện quyền, nghĩa vụ bằng hành vi của mình).</p>
+        </div>
+
+        <div class="card">
+          <h3>Sự kiện pháp lý</h3>
+          <div class="grid-2">
+            <div>
+              <h4>Đơn giản</h4>
+              <p>Chỉ cần một sự kiện là đủ để làm phát sinh, thay đổi hoặc chấm dứt quan hệ pháp luật.</p>
+              <p><em>Ví dụ:</em> sinh, chết, hết hạn hợp đồng…</p>
+            </div>
+            <div>
+              <h4>Phức tạp (hợp thành)</h4>
+              <p>Cần nhiều sự kiện kết hợp với nhau mới tạo thành cơ sở pháp lý đầy đủ.</p>
+              <p><em>Ví dụ:</em> mua bán nhà đất (hợp đồng + đăng ký + …)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Vi phạm pháp luật – 4 dấu hiệu bắt buộc</h3>
+          <ol>
+            <li><strong>Hành vi</strong> (hành động hoặc không hành động).</li>
+            <li><strong>Trái pháp luật</strong> (vi phạm quy phạm pháp luật hiện hành).</li>
+            <li><strong>Có lỗi</strong> (cố ý hoặc vô ý).</li>
+            <li><strong>Có năng lực trách nhiệm pháp lý</strong> (đủ tuổi, đủ năng lực hành vi theo quy định).</li>
+          </ol>
+          <div class="highlight danger">
+            Thiếu bất kỳ dấu hiệu nào → không cấu thành vi phạm pháp luật. Đây là phần hay ra bài tập tình huống nhất.
+          </div>
+          <h4>Phân loại vi phạm & trách nhiệm pháp lý tương ứng</h4>
+          <ul>
+            <li>Vi phạm hình sự → trách nhiệm hình sự</li>
+            <li>Vi phạm hành chính → trách nhiệm hành chính</li>
+            <li>Vi phạm dân sự → trách nhiệm dân sự (bồi thường thiệt hại…)</li>
+            <li>Vi phạm kỷ luật → trách nhiệm kỷ luật</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section id="sec6">
+        <h2 class="section-title"><span class="section-num">6</span> Ý thức pháp luật & hệ thống pháp luật</h2>
+        <div class="card">
+          <h3>Ý thức pháp luật</h3>
+          <p>Là toàn bộ những quan điểm, tư tưởng, tình cảm, thái độ của con người đối với pháp luật hiện hành và pháp luật nói chung.</p>
+          <p>Bao gồm: tri thức pháp luật + tình cảm pháp luật + thái độ hành vi.</p>
+        </div>
+        <div class="card">
+          <h3>Hệ thống pháp luật</h3>
+          <ul>
+            <li><strong>Góc độ bên trong</strong>: cấu trúc nội tại (quy phạm → chế định → ngành luật → hệ thống pháp luật).</li>
+            <li><strong>Góc độ bên ngoài</strong>: mối quan hệ với các hiện tượng xã hội khác (kinh tế, chính trị, đạo đức…).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section id="sec7">
+        <h2 class="section-title"><span class="section-num">7</span> Giải thích pháp luật</h2>
+        <div class="card">
+          <h3>Phân loại chính</h3>
+          <ul>
+            <li><strong>Giải thích chính thức</strong>: do cơ quan nhà nước có thẩm quyền thực hiện, có giá trị bắt buộc.</li>
+            <li><strong>Giải thích không chính thức</strong> (học thuật, tư vấn…): không có giá trị bắt buộc chung.</li>
+          </ul>
+          <p>Khi làm bài cần nêu rõ loại giải thích và căn cứ pháp lý nếu có.</p>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section id="sec8">
+        <h2 class="section-title"><span class="section-num">8</span> Hướng dẫn làm bài thi</h2>
+        <div class="card">
+          <h3>Cấu trúc đề thường gặp</h3>
+          <ul>
+            <li>Trắc nghiệm (kiến thức cơ bản + điểm dễ nhầm)</li>
+            <li>Tự luận (khái niệm, phân biệt, phân tích)</li>
+            <li>Bài tập tình huống (hầu hết liên quan <strong>vi phạm pháp luật</strong>)</li>
+          </ul>
+        </div>
+
+        <div class="tip-box">
+          <h4>💡 Cách làm bài tập tình huống (công thức vàng)</h4>
+          <ol>
+            <li>Đọc kỹ → tìm từ khóa (hành vi, độ tuổi, hậu quả, chủ thể…).</li>
+            <li>Kiểm tra đủ <strong>4 dấu hiệu</strong> của vi phạm pháp luật.</li>
+            <li>Xác định loại vi phạm (hình sự / hành chính / dân sự…).</li>
+            <li>Xác định trách nhiệm pháp lý tương ứng.</li>
+            <li>Nêu căn cứ pháp lý nếu có thể (dù chỉ mang tính định hướng).</li>
+          </ol>
+        </div>
+
+        <div class="card">
+          <h3>Nhóm câu hay sai (cô nhấn mạnh)</h3>
+          <ul>
+            <li>Ai có quyền giám sát tối cao? → Chỉ Quốc hội.</li>
+            <li>Thẩm quyền Viện kiểm sát → công tố + kiểm sát tư pháp (không giám sát tối cao).</li>
+            <li>Phân biệt văn bản quy phạm ↔ văn bản áp dụng.</li>
+            <li>Sự kiện pháp lý đơn giản ↔ phức tạp.</li>
+            <li>Đủ 4 dấu hiệu mới là vi phạm pháp luật.</li>
+          </ul>
+        </div>
+
+        <div class="highlight">
+          <strong>Nguyên tắc trình bày:</strong> Tìm từ khóa → đọc kỹ đề → nêu căn cứ pháp lý (điều khoản) → không học thuộc lòng máy móc, phải hiểu và áp dụng.
+        </div>
+      </section>
+
+      <!-- 9 Quiz -->
+      <section id="sec9">
+        <h2 class="section-title"><span class="section-num">9</span> Luyện tập nhanh</h2>
+        <div class="card">
+          <p style="margin-bottom:1rem;color:var(--text-muted)">Chọn đáp án đúng rồi bấm “Kiểm tra” để xem giải thích.</p>
+
+          <div class="quiz-item" data-correct="b">
+            <div class="quiz-q">1. Cơ quan nào thực hiện quyền giám sát tối cao đối với hoạt động của Nhà nước?</div>
+            <div class="quiz-options">
+              <label><input type="radio" name="q1" value="a"> a) Viện kiểm sát nhân dân tối cao</label>
+              <label><input type="radio" name="q1" value="b"> b) Quốc hội</label>
+              <label><input type="radio" name="q1" value="c"> c) Chính phủ</label>
+              <label><input type="radio" name="q1" value="d"> d) Tòa án nhân dân tối cao</label>
+            </div>
+            <div class="quiz-feedback"></div>
+            <button class="btn" style="margin-top:0.6rem" onclick="checkQuiz(this)">Kiểm tra</button>
+          </div>
+
+          <div class="quiz-item" data-correct="c">
+            <div class="quiz-q">2. Viện kiểm sát nhân dân thực hiện chức năng nào?</div>
+            <div class="quiz-options">
+              <label><input type="radio" name="q2" value="a"> a) Giám sát tối cao toàn bộ hoạt động nhà nước</label>
+              <label><input type="radio" name="q2" value="b"> b) Lập pháp</label>
+              <label><input type="radio" name="q2" value="c"> c) Thực hành quyền công tố và kiểm sát hoạt động tư pháp</label>
+              <label><input type="radio" name="q2" value="d"> d) Quản lý hành chính nhà nước cao nhất</label>
+            </div>
+            <div class="quiz-feedback"></div>
+            <button class="btn" style="margin-top:0.6rem" onclick="checkQuiz(this)">Kiểm tra</button>
+          </div>
+
+          <div class="quiz-item" data-correct="a">
+            <div class="quiz-q">3. Bản án của Tòa án thuộc loại văn bản nào?</div>
+            <div class="quiz-options">
+              <label><input type="radio" name="q3" value="a"> a) Văn bản áp dụng pháp luật</label>
+              <label><input type="radio" name="q3" value="b"> b) Văn bản quy phạm pháp luật</label>
+              <label><input type="radio" name="q3" value="c"> c) Văn bản hướng dẫn</label>
+              <label><input type="radio" name="q3" value="d"> d) Văn bản hành chính thông thường</label>
+            </div>
+            <div class="quiz-feedback"></div>
+            <button class="btn" style="margin-top:0.6rem" onclick="checkQuiz(this)">Kiểm tra</button>
+          </div>
+
+          <div class="quiz-item" data-correct="b">
+            <div class="quiz-q">4. Nhà nước Việt Nam thuộc hình thức cấu trúc nào?</div>
+            <div class="quiz-options">
+              <label><input type="radio" name="q4" value="a"> a) Liên bang</label>
+              <label><input type="radio" name="q4" value="b"> b) Đơn nhất</label>
+              <label><input type="radio" name="q4" value="c"> c) Liên minh</label>
+              <label><input type="radio" name="q4" value="d"> d) Hỗn hợp</label>
+            </div>
+            <div class="quiz-feedback"></div>
+            <button class="btn" style="margin-top:0.6rem" onclick="checkQuiz(this)">Kiểm tra</button>
+          </div>
+
+          <div class="quiz-item" data-correct="d">
+            <div class="quiz-q">5. Vi phạm pháp luật phải có đủ mấy dấu hiệu?</div>
+            <div class="quiz-options">
+              <label><input type="radio" name="q5" value="a"> a) 2</label>
+              <label><input type="radio" name="q5" value="b"> b) 3</label>
+              <label><input type="radio" name="q5" value="c"> c) 5</label>
+              <label><input type="radio" name="q5" value="d"> d) 4</label>
+            </div>
+            <div class="quiz-feedback"></div>
+            <button class="btn" style="margin-top:0.6rem" onclick="checkQuiz(this)">Kiểm tra</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="card" style="background:linear-gradient(145deg,#1e293b,#1a2332);border-color:#334155">
+        <h3 style="color:#93c5fd">📌 Tóm lại (theo bài giảng)</h3>
+        <p style="color:var(--text-muted)">Bài giảng tập trung ôn các kiến thức trọng tâm về <strong>nhà nước – bộ máy nhà nước – quan hệ pháp luật – vi phạm pháp luật</strong> và cách trình bày câu trả lời có căn cứ pháp lý rõ ràng theo Hiến pháp 2013 (sửa đổi, bổ sung 2025). Cô nhấn mạnh: tìm từ khóa, nêu điều khoản, tránh nhầm lẫn các khái niệm cơ bản.</p>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    Ôn tập LLNNPL · Dựa trên ghi chú bài giảng + cấu trúc giáo trình Lý luận chung về Nhà nước và Pháp luật (ĐH Luật Hà Nội)<br>
+    Chỉ mang tính chất hỗ trợ học tập, không thay thế giáo trình chính thức.
+  </footer>
+
+  <script>
+    // Mobile nav
+    const toggle = document.getElementById('navToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    toggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('show');
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('show');
+    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+      });
+    });
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // Quiz
+    function checkQuiz(btn) {
+      const item = btn.closest('.quiz-item');
+      const correct = item.dataset.correct;
+      const selected = item.querySelector('input[type=radio]:checked');
+      const feedback = item.querySelector('.quiz-feedback');
+      if (!selected) {
+        feedback.textContent = 'Bạn chưa chọn đáp án.';
+        feedback.className = 'quiz-feedback show wrong';
+        return;
+      }
+      if (selected.value === correct) {
+        feedback.textContent = '✅ Đúng! ' + getExplain(item, correct);
+        feedback.className = 'quiz-feedback show correct';
+      } else {
+        feedback.textContent = '❌ Sai. Đáp án đúng là ' + correct.toUpperCase() + '. ' + getExplain(item, correct);
+        feedback.className = 'quiz-feedback show wrong';
+      }
+    }
+    function getExplain(item, ans) {
+      const q = item.querySelector('.quiz-q').textContent;
+      if (q.includes('giám sát tối cao')) return 'Chỉ Quốc hội có quyền giám sát tối cao (Điều 69 HP 2013).';
+      if (q.includes('Viện kiểm sát')) return 'VKS thực hành quyền công tố và kiểm sát hoạt động tư pháp.';
+      if (q.includes('Bản án')) return 'Bản án là văn bản áp dụng pháp luật cho trường hợp cụ thể.';
+      if (q.includes('hình thức cấu trúc')) return 'Việt Nam là nhà nước đơn nhất.';
+      if (q.includes('dấu hiệu')) return 'Vi phạm pháp luật phải có đủ 4 dấu hiệu: hành vi, trái pháp luật, có lỗi, có năng lực trách nhiệm.';
+      return '';
+    }
+  </script>
+</body>
+</html>
